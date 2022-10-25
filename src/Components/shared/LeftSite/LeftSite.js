@@ -12,7 +12,7 @@ const LeftSite = () => {
     },[])
     return (
         <div>
-            <h2>All Course {course.length}</h2>
+            <h4 className='text-warning'>Selected Your Course</h4>
             <div>
                 {
                     course.map(course => <p key={course.id}>

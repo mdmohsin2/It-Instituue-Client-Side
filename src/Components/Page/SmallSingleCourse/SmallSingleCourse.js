@@ -1,14 +1,14 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
+import { useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import './CourseCard.css'
+import { Image } from 'react-bootstrap';
 import { FaEye, FaUserGraduate } from "react-icons/fa";
-import { Link } from 'react-router-dom';
 
-const CourseCard = ({ course }) => {
-    const { name, price, viewer, student, information, img,id } = course;
+const SmallSingleCourse = () => {
+    const data = useLoaderData()
+    const { name, price, viewer, student, information, img } = data;
     return (
-        <Card className="text-center mb-5">
+        <Card className="text-center">
             <Card.Header>
                 <Image className='img' src={img}></Image>
             </Card.Header>
@@ -20,15 +20,10 @@ const CourseCard = ({ course }) => {
                     </div>
                 </Card.Title>
                 <Card.Text>
-                    {
-                        information.length > 200 ?
-                            <p>{information.slice(0,200) + '...'} <Link to={`/smallSingleCourse/${id}`}>read more</Link> </p>
-                            :
-                            <p>{information}</p>
-                    }
+                    {information}
                 </Card.Text>
             </Card.Body>
-            <Card.Footer className="text-grey">
+            <Card.Footer className="text-success">
                 <div className='d-flex justify-content-between'>
                     <p>student : <FaUserGraduate></FaUserGraduate> {student}</p>
                     <p>View : <FaEye></FaEye>  {viewer}</p>
@@ -38,4 +33,4 @@ const CourseCard = ({ course }) => {
     );
 };
 
-export default CourseCard;
+export default SmallSingleCourse;
