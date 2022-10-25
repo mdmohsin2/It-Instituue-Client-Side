@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Blog from "../Components/Page/Blog/Blog";
 import Course from "../Components/Page/Course/Course";
 import FAQ from "../Components/Page/FAQ/FAQ";
 import SingleCourse from "../Components/Page/singleCourse/SingleCourse";
@@ -31,7 +32,8 @@ export const router = createBrowserRouter([
                 element: <FAQ></FAQ>
             },
             {
-                
+                path: '/blog',
+                element: <Blog></Blog>
             }
         ]
     }
