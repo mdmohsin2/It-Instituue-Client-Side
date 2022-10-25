@@ -3,14 +3,14 @@ import { Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.jpg'
+import LeftSite from '../LeftSite/LeftSite';
 import './Header.css'
 
 const Header = () => {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className='mb-4' collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand>
                     <Link className='text-logo' to='/'><Image className='logo' src={logo}></Image>
@@ -19,19 +19,8 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link><Link to='/course'>Course</Link> </Nav.Link>
+                        <Nav.Link><Link to='/'>Course</Link> </Nav.Link>
                         <Nav.Link href="#pricing">Pricing</Nav.Link>
-                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Separated link
-                            </NavDropdown.Item>
-                        </NavDropdown>
                     </Nav>
                     <Nav>
                         <Nav.Link href="#deets">More deets</Nav.Link>
@@ -39,6 +28,9 @@ const Header = () => {
                             Dank memes
                         </Nav.Link>
                     </Nav>
+                    <div className='d-lg-none'>
+                        <LeftSite></LeftSite>
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

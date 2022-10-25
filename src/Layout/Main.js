@@ -10,7 +10,7 @@ const Main = () => {
             <Header></Header>
             <Container>
                 <Row>
-                    <Col sm="3">
+                    <Col sm="3" className='d-none d-lg-block'>
                         <LeftSite></LeftSite>
                     </Col>
                     <Col sm="9">
