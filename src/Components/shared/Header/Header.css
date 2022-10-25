@@ -1,0 +1,14 @@
+.logo{
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.text-logo{
+    color: beige;
+    text-decoration: none;
+}
+
+.text-logo:hover{
+    color: lightcoral;
+}
