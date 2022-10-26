@@ -3,13 +3,16 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGithub, FaGoogle, } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { useState } from 'react';
 
 const Login = () => {
-    const { providerLogin, providerLoginGithub } = useContext(AuthContext)
+    const { providerLogin, providerLoginGithub, signIn } = useContext(AuthContext)
+    const [error, setError] = useState('')
+    const navigate = useNavigate();
 
 
     // googleAuth and githubAuth provider setup area
@@ -37,24 +40,50 @@ const Login = () => {
             .catch(error => console.error(error))
     }
 
+    // handleSignIn setup area
+    const handleSignIn = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(email, password);
+        signIn(email, password)
+
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+            form.reset()
+            setError('')
+            navigate('/')
+        })
+        .catch(error=>{
+            console.error(error);
+            setError(error.message)
+        })
+    }
+
 
 
     return (
         <div>
             <h2>Login</h2>
-            <Form>
+            <Form onSubmit={handleSignIn}>
                 <Form.Group className="mb-3">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control name='email' type="email" placeholder="Enter email" />
+                    <Form.Control name='email' type="email" placeholder="Enter email" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control name="password" type="password" placeholder="Password" />
+                    <Form.Control name="password" type="password" placeholder="Password" required />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
+                <Form.Text className="text-danger">
+                    {error}
+                </Form.Text>
             </Form>
             <ButtonGroup className='mt-5 d-flex' vertical>
                 <Button onClick={handleGoogleSignIn} className='mb-3' variant="outline-primary"><FaGoogle></FaGoogle> Login with google</Button>

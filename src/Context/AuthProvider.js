@@ -1,6 +1,6 @@
 import React from 'react';
 import { createContext } from 'react';
-import {getAuth, onAuthStateChanged, signInWithPopup} from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import app from '../firebase/Firebase.config'
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -12,32 +12,42 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
 
     // google handle
-    const providerLogin = (provider) =>{
+    const providerLogin = (provider) => {
         return signInWithPopup(auth, provider)
     }
 
     //github handle 
-    const providerLoginGithub = (provider) =>{
+    const providerLoginGithub = (provider) => {
         return signInWithPopup(auth, provider)
     }
 
     // logOut setup area
-    const logOut = ()=>{
-        
+    const logOut = () => {
+        return signOut(auth)
+    }
+
+    // create user setup register
+    const createUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    //create signIn setup area
+    const signIn = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     // useEffect setup 
-    useEffect( ()=>{
-        const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
         });
-        return ()=>{
+        return () => {
             unsubscribe();
         }
-    },[])
+    }, [])
 
 
-    const authInfo = {user, providerLogin,providerLoginGithub}
+    const authInfo = { user, providerLogin, providerLoginGithub, logOut, createUser, signIn }
 
     return (
         <AuthContext.Provider value={authInfo}>

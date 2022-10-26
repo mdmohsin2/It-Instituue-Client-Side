@@ -12,7 +12,20 @@ import './Header.css'
 import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user,logOut } = useContext(AuthContext)
+
+    // handle Logout setup area
+    const handleLogout = ()=>{
+        logOut()
+        .then(()=>{
+
+        })
+        .catch(error=>{
+            console.error(error);
+        })
+    }
+
+
     return (
         <Navbar className='mb-4 header' collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -33,11 +46,11 @@ const Header = () => {
                                 user?.uid ?
                                     <>
                                         <span className='me-2'>{user?.displayName}</span>
-                                        <button className='btn-sm bg-info'>Log out</button>
+                                        <button onClick={handleLogout} className='btn-sm bg-info'>Log out</button>
                                     </>
                                     :
                                     <>
-                                        <Link to='/login'>Login</Link>
+                                        <Link className='me-3' to='/login'>Login</Link>
                                         <Link to='/register'>Register</Link>
                                     </>
 
