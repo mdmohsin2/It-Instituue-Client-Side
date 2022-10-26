@@ -10,7 +10,7 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <Navbar className='mb-4' collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className='mb-4 header' collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand>
                     <Link className='text-logo' to='/'><Image className='logo' src={logo}></Image>
