@@ -3,6 +3,8 @@ import Blog from "../Components/Page/Blog/Blog";
 import Course from "../Components/Page/Course/Course";
 import Error from "../Components/Page/Error/Error";
 import FAQ from "../Components/Page/FAQ/FAQ";
+import Login from "../Components/Page/Login/Login";
+import Register from "../Components/Page/Register/Register";
 import SingleCourse from "../Components/Page/singleCourse/SingleCourse";
 import SmallSingleCourse from "../Components/Page/SmallSingleCourse/SmallSingleCourse";
 import Main from "../Layout/Main";
@@ -35,6 +37,14 @@ export const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
         ]
         
