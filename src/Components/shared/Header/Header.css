@@ -21,3 +21,51 @@
 .header a:hover{
     color: lightsalmon;
 }
+
+.theme{
+    background-color: lightgray;
+    text-decoration: none;
+}
+
+
+
+
+
+
+.toggle-item {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .toggle-item + label {
+    display: flex;
+    width: 7em;
+    height: 3em;
+    background: #aaa;
+    border-radius: 50px;
+    position: relative;
+    transition: all .3s ease;
+    cursor: pointer;
+    box-shadow: inset 0 0 5px #222;
+  }
+  .toggle-item + label:after {
+    content: '';
+    position: absolute;
+    width: 2.5em;
+    height: 2.5em;
+    background: #fff;
+    border-radius: 50%;
+    top: .25em;
+    left: .25em;
+    transition: all .2s ease;
+  }
+  .toggle-item:checked + label {
+    background: #000;
+  }
+  .toggle-item:checked + label:after {
+    left: 4.1em;
+  }
+
+
+
+

@@ -4,6 +4,7 @@ import CheckOut from "../Components/Page/CheckOut/CheckOut";
 import Course from "../Components/Page/Course/Course";
 import Error from "../Components/Page/Error/Error";
 import FAQ from "../Components/Page/FAQ/FAQ";
+import Home from "../Components/Page/Home/Home";
 import Login from "../Components/Page/Login/Login";
 import Register from "../Components/Page/Register/Register";
 import SingleCourse from "../Components/Page/singleCourse/SingleCourse";
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
+                element: <Home></Home>
+            },
+            {
+                path: '/course',
                 element: <Course></Course>,
                 loader: () => fetch(`http://localhost:5000/alls`)
             },
