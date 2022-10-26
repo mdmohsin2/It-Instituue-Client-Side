@@ -4,6 +4,7 @@ import  './CheckOut.css'
 
 const CheckOut = () => {
     const data = useLoaderData()
+   
     return (
         <div className='text-center pt-4 bgs'>
             <h2 className='text-primary'>Check-Out Page</h2>

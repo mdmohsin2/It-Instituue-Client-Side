@@ -13,13 +13,20 @@ import './Header.scss'
 import { FaUser } from 'react-icons/fa';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import { FaCloudDownloadAlt } from "react-icons/fa";
+import jsPDF from 'jspdf';
 
 
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
 
-
+    //handle pdf
+    const pdfDownload = ()=>{
+        let doc = new jsPDF('landscape','px','a4','false')
+        doc.addImage(logo, 'PNG', 65,20,500,400)
+        doc.save('a.pdf')
+    }
 
     // handle Logout setup area
     const handleLogout = () => {
@@ -47,6 +54,7 @@ const Header = () => {
                         <Nav.Link> <Link to='/course'>Course</Link> </Nav.Link>
                         <Nav.Link> <Link to='/faq'>FAQ</Link> </Nav.Link>
                         <Nav.Link> <Link to='blog'>Blog</Link> </Nav.Link>
+                        <Nav.Link> <Link onClick={pdfDownload}><FaCloudDownloadAlt></FaCloudDownloadAlt></Link> </Nav.Link>
                         <>
                             <div className="box d-none d-md-block">
                                 <input className="type-checkbox" id="toogle" type="checkbox" name="name" />
@@ -102,7 +110,7 @@ const Header = () => {
                             }
                         </Nav.Link>
                     </Nav>
-                    <div className='d-lg-none'>
+                    <div className='d-lg-none mt-3'>
                         <LeftSite></LeftSite>
                     </div>
                 </Navbar.Collapse>
