@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGithub, FaGoogle, } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
@@ -13,8 +13,11 @@ const Login = () => {
     const { providerLogin, providerLoginGithub, signIn } = useContext(AuthContext)
     const [error, setError] = useState('')
     const navigate = useNavigate();
+    
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
 
-
+ 
     // googleAuth and githubAuth provider setup area
     const googleProvider = new GoogleAuthProvider()
     const hithubProvider = new GithubAuthProvider()
@@ -53,9 +56,9 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             console.log(user);
-            form.reset()
-            setError('')
-            navigate('/')
+            form.reset();
+            setError('');
+            navigate(from, { replace: true })
         })
         .catch(error=>{
             console.error(error);

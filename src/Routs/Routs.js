@@ -8,6 +8,7 @@ import Register from "../Components/Page/Register/Register";
 import SingleCourse from "../Components/Page/singleCourse/SingleCourse";
 import SmallSingleCourse from "../Components/Page/SmallSingleCourse/SmallSingleCourse";
 import Main from "../Layout/Main";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
 
@@ -27,7 +28,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/smallSingleCourse/:id',
-                element: <SmallSingleCourse></SmallSingleCourse>,
+                element: <PrivateRoute><SmallSingleCourse></SmallSingleCourse></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/smallSingleCourse/${params.id}`)
             },
             {
