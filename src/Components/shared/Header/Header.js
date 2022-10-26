@@ -9,6 +9,7 @@ import logo from '../../../assets/logo.jpg'
 import { AuthContext } from '../../../Context/AuthProvider';
 import LeftSite from '../LeftSite/LeftSite';
 import './Header.css'
+import './Header.scss'
 import { FaUser } from 'react-icons/fa';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -17,6 +18,8 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
+
+
 
     // handle Logout setup area
     const handleLogout = () => {
@@ -44,11 +47,17 @@ const Header = () => {
                         <Nav.Link> <Link to='/course'>Course</Link> </Nav.Link>
                         <Nav.Link> <Link to='/faq'>FAQ</Link> </Nav.Link>
                         <Nav.Link> <Link to='blog'>Blog</Link> </Nav.Link>
+                        <>
+                            <div className="box d-none d-md-block">
+                                <input className="type-checkbox" id="toogle" type="checkbox" name="name" />
+                                <label className="estado" for="toogle">
+                                    <span className="aprobado">Dark</span>
+                                    <span className="desaprobado">Light</span>
+                                </label>
+                            </div>
+                        </>
                     </Nav>
-                    <>
-                        <input type="checkbox" id="toggle" className="toggle-item" />
-                        <label for="toggle" className='text-white'></label>
-                    </>
+
                     <Nav>
                         <Nav.Link href="#deets">
                             {
@@ -103,3 +112,4 @@ const Header = () => {
 };
 
 export default Header;
+
