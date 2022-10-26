@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../Components/Page/Blog/Blog";
+import CheckOut from "../Components/Page/CheckOut/CheckOut";
 import Course from "../Components/Page/Course/Course";
 import Error from "../Components/Page/Error/Error";
 import FAQ from "../Components/Page/FAQ/FAQ";
@@ -46,6 +47,11 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/checkout/smallSingleCourse/:id',
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/checkout/smallSingleCourse/${params.id}`)
             }
         ]
         

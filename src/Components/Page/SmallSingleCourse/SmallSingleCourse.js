@@ -1,12 +1,13 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { Image } from 'react-bootstrap';
-import { FaEye, FaUserGraduate } from "react-icons/fa";
+import './SmallSingleCourse.css'
+import { FaEye, FaUserGraduate,FaArrowRight } from "react-icons/fa";
 
 const SmallSingleCourse = () => {
     const data = useLoaderData()
-    const { name, price, viewer, student, information, img } = data;
+    const {id, name, price, viewer, student, information, img } = data;
     return (
         <Card className="text-center">
             <Card.Header>
@@ -27,6 +28,9 @@ const SmallSingleCourse = () => {
                 <div className='d-flex justify-content-between'>
                     <p>student : <FaUserGraduate></FaUserGraduate> {student}</p>
                     <p>View : <FaEye></FaEye>  {viewer}</p>
+                </div>
+                <div>
+                    <button className='btn btn-success'><Link className='checkout' to={`/checkout/smallSingleCourse/${id}`}>Please Check out <FaArrowRight></FaArrowRight></Link></button>
                 </div>
             </Card.Footer>
         </Card>

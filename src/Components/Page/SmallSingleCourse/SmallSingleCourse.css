@@ -1,0 +1,8 @@
+.checkout{
+    text-decoration: none;
+    color: floralwhite;
+}
+
+.checkout:hover{
+    color: lightcoral;
+}
