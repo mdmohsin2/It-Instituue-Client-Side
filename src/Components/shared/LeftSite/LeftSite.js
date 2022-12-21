@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 
 const LeftSite = () => {
     const [course, setCourse] = useState([])
-    useEffect( ()=>{
-        fetch('http://localhost:5000/allcourse')
-        .then(res=> res.json())
-        .then(data=>setCourse(data))
-    },[])
+    useEffect(() => {
+        fetch('https://assignment-10-server-indol.vercel.app/allcourse')
+            .then(res => res.json())
+            .then(data => setCourse(data))
+    }, [])
     return (
         <div>
             <h4 className='text-warning'>Selected Your Course</h4>

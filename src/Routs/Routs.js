@@ -25,17 +25,17 @@ export const router = createBrowserRouter([
             {
                 path: '/course',
                 element: <Course></Course>,
-                loader: () => fetch(`http://localhost:5000/alls`)
+                loader: () => fetch(`https://assignment-10-server-indol.vercel.app/alls`)
             },
             {
                 path: '/singleCourse/:id',
                 element: <SingleCourse></SingleCourse>,
-                loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-server-indol.vercel.app/course/${params.id}`)
             },
             {
                 path: '/smallSingleCourse/:id',
                 element: <PrivateRoute><SmallSingleCourse></SmallSingleCourse></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/smallSingleCourse/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-server-indol.vercel.app/smallSingleCourse/${params.id}`)
             },
             {
                 path: '/faq',
@@ -56,10 +56,10 @@ export const router = createBrowserRouter([
             {
                 path: '/checkout/smallSingleCourse/:id',
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/checkout/smallSingleCourse/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-server-indol.vercel.app/checkout/smallSingleCourse/${params.id}`)
             }
         ]
-        
+
     },
     {
         path: '*',
